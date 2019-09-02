@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--spring容器创建管理bean-->
+
+    <bean class="spring.core.study.Header" id="header">
+        <property name="hairColor" value="褐色"/>
+    </bean>
+
+    <bean class="spring.core.study.Person" id="person">
+        <property name="age" value="55"/>
+        <property name="name" value="lisi"/>
+        <property name="header" ref="header"/>
+    </bean>
+
+    <bean class="spring.core.study.controller.RequestController"
+          id="RequestController"
+          scope="request"/>
+
+    <bean class="spring.core.study.controller.SessionController"
+          id="SessionController"
+          scope="session"
+
+    />
+    <bean class="spring.core.study.controller.ApplicationController"
+          id="ApplicationController"
+          scope="singleton"
+    />
+
+
+</beans>
