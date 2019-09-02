@@ -3,27 +3,21 @@ package com.stonehiy.study.shiro
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.authc.UsernamePasswordToken
 import org.apache.shiro.mgt.DefaultSecurityManager
-import org.apache.shiro.realm.SimpleAccountRealm
-import org.junit.Before
 import org.junit.Test
 
-//默认realm
-class AuthenticationTest {
-
-    private val simpleAccountRealm = SimpleAccountRealm()
-
-    @Before
-    fun addUser() {
-        simpleAccountRealm.addAccount("Mark", "123456", "admin")
-    }
+class CustomRealmTest {
 
 
     @Test
-    fun authenticationTest() {
+    fun customRealmTest() {
+
+        //
+        val customRealm = CustomRealm()
+
 
         //1.构建DefaultSecurityManager环境
         val defaultSecurityManager = DefaultSecurityManager()
-        defaultSecurityManager.setRealm(simpleAccountRealm)
+        defaultSecurityManager.setRealm(customRealm)
 
         //2.主体提交认证请求
         SecurityUtils.setSecurityManager(defaultSecurityManager)
@@ -39,7 +33,13 @@ class AuthenticationTest {
         //角色授权校验，没有这个角色会抛出异常
         subject.checkRole("admin")
 
+        //角色权限验证,没有权限会抛出异常
+//        subject.checkPermission("user:delete")
+//        subject.checkPermission("user:update")
+        subject.checkPermission("user:add")
+
 //        subject.logout()
 //        println("subject.isAuthenticated = ${subject.isAuthenticated}")
+
     }
 }
