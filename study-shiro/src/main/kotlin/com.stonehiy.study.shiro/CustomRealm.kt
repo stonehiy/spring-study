@@ -7,6 +7,7 @@ import org.apache.shiro.authz.AuthorizationInfo
 import org.apache.shiro.authz.SimpleAuthorizationInfo
 import org.apache.shiro.realm.AuthorizingRealm
 import org.apache.shiro.subject.PrincipalCollection
+import org.apache.shiro.util.ByteSource
 
 
 /**
@@ -16,6 +17,8 @@ class CustomRealm : AuthorizingRealm() {
 
     private val map = HashMap<String, String>().apply {
         put("Mark", "123456")
+        put("Lily", "6a804d292d13f9ecc4dd46dfd8a1dfc1")
+
     }
 
 
@@ -28,6 +31,10 @@ class CustomRealm : AuthorizingRealm() {
         val password = getPasswordByUserName(userName) ?: return null
 
         return SimpleAuthenticationInfo("Mark", password, "CustomRealm")
+                //密码加盐
+                .apply {
+                    credentialsSalt = ByteSource.Util.bytes("Lily")
+                }
 
     }
 
