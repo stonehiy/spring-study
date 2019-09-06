@@ -11,6 +11,7 @@
     <modules>
         <module>study-spring</module>
         <module>study-shiro</module>
+        <module>study-stringmvc</module>
     </modules>
 
 

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--spring容器创建管理bean-->
+
+
+    <!--采用注释的方式配置bean-->
+    <context:annotation-config/>
+    <!--扫描有spring相关注解的包-->
+    <context:component-scan base-package="spring.core.study"/>
 
     <bean class="spring.core.study.Header" id="header">
         <property name="hairColor" value="褐色"/>
@@ -15,7 +23,7 @@
         <property name="header" ref="header"/>
     </bean>
 
-    <bean class="spring.core.study.controller.RequestController"
+   <!-- <bean class="spring.core.study.controller.RequestController"
           id="RequestController"
           scope="request"/>
 
@@ -27,7 +35,7 @@
     <bean class="spring.core.study.controller.ApplicationController"
           id="ApplicationController"
           scope="singleton"
-    />
+    />-->
 
 
 </beans>
