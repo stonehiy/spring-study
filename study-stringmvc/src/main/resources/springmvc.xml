@@ -28,10 +28,12 @@
     <context:component-scan base-package="com.stonehiy.study.stringmvc"/>
 
 
-    <!--视图解析器，jsp html 等-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--视图解析器，jsp 等-->
+    <bean id="internalResourceViewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/views/"/>
         <property name="suffix" value=".jsp"/>
+        <property name="order" value="1"/>
     </bean>
 
 
