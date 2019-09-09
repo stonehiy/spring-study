@@ -28,7 +28,6 @@ class SpringMvcController {
             username = "pack"
             password = "123456"
         }
-//        return Result.onSuccess(this)
         return Result.onSuccess(user)
     }
 
