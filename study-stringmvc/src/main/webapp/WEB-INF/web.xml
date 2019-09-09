@@ -9,11 +9,13 @@
     ServletContext -> context-param -> listener -> filter -> servlet
     -->
 
+
+
     <!-- 用来定义首页的列单，包含一个子元素：-->
     <welcome-file-list>
         <!--指定首页的文件名称-->
-        <welcome-file>index.jsp</welcome-file>
         <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
         <welcome-file>index.htm</welcome-file>
     </welcome-file-list>
 
@@ -48,9 +50,14 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!--
+      如果配置了servlet的url-pattern是/*，那么访问localhost:8080/会匹配到该servlet上，而不是匹配welcome-file-list；
+      如果url-pattern是/（该servlet即为默认servlet），如果其他匹配模式都没有匹配到，则会匹配welcome-file-list。
+    -->
+
     <servlet-mapping>
         <servlet-name>SpringMvcServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
 
@@ -58,6 +65,7 @@
         <servlet-name>default</servlet-name>
         <url-pattern>*.jsp</url-pattern>
     </servlet-mapping>
+
 
 
 </web-app>
