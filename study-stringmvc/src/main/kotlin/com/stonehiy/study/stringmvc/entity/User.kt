@@ -1,6 +1,8 @@
 package com.stonehiy.study.stringmvc.entity
 
-class User {
+import java.io.Serializable
+
+class User : Serializable {
     var username: String = "";
     var password: String = "";
     var name: String = "";

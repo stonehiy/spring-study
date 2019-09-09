@@ -1,5 +1,6 @@
 package com.stonehiy.study.stringmvc.controller
 
+import com.stonehiy.study.stringmvc.entity.Result
 import com.stonehiy.study.stringmvc.entity.User
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
@@ -22,11 +23,13 @@ class SpringMvcController {
     @RequestMapping(method = [RequestMethod.GET], value = ["/restful"])
     @ResponseBody
     fun restful(): Any {
-        val user = User()
-        user.age = 1
-        user.username = "pack"
-        user.password = "123456"
-        return user
+        val user = User().apply {
+            age = 1
+            username = "pack"
+            password = "123456"
+        }
+//        return Result.onSuccess(this)
+        return Result.onSuccess(user)
     }
 
 }
